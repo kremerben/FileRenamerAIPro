@@ -6,6 +6,27 @@ from datetime import datetime
 import os
 
 
+NON_DESCRIPTIVE_NAMES = {
+    "documents",
+    "downloads",
+    "projects",
+    "desktop",
+    "new folder",
+    "zzz_archive",
+    "work",
+}
+
+
+def get_parent_directory_name(filepath):
+    parent_path = os.path.dirname(os.path.abspath(filepath))
+    if not parent_path:
+        return None
+    parent_name = os.path.basename(parent_path)
+    if parent_name and parent_name.lower() not in NON_DESCRIPTIVE_NAMES:
+        return parent_name
+    return None
+
+
 def find_dates(text):
     # Matches common date formats (YYYY-MM-DD, MM/DD/YYYY, etc.)
     # Heuristic for the task
@@ -82,22 +103,27 @@ def analyze_pdf(filepath):
     prominent_spans = []
     max_font_size = 0
 
-    first_page = doc[0]
-    blocks = first_page.get_text("dict")["blocks"]
+    first_page = None
+    if doc.page_count > 0:
+        first_page = doc[0]
+        blocks = first_page.get_text("dict")["blocks"]
 
-    for b in blocks:
-        if b["type"] == 0:  # text block
-            for l in b["lines"]:
-                for s in l["spans"]:
-                    text += s["text"] + " "
-                    if s["size"] > max_font_size:
-                        max_font_size = s["size"]
-                        prominent_spans = [s["text"].strip()]
-                    elif abs(s["size"] - max_font_size) < 0.1:  # Same font size
-                        prominent_spans.append(s["text"].strip())
+        for b in blocks:
+            if b["type"] == 0:  # text block
+                for l in b["lines"]:
+                    for s in l["spans"]:
+                        text += s["text"] + " "
+                        if s["size"] > max_font_size:
+                            max_font_size = s["size"]
+                            prominent_spans = [s["text"].strip()]
+                        elif abs(s["size"] - max_font_size) < 0.1:  # Same font size
+                            prominent_spans.append(s["text"].strip())
 
     # Heuristic: join all spans with the same largest font size
-    prominent_text = " ".join(prominent_spans)
+    prominent_text = " ".join(prominent_spans).strip()
+
+    if not prominent_text:
+        prominent_text = get_parent_directory_name(filepath) or "pdf"
 
     found_date = find_dates(text)
     if not found_date:
@@ -144,13 +170,18 @@ def analyze_image(filepath):
         # Suggested name for image using mock AI
         suggested_subject = get_ai_name_suggestion(filepath)
         if suggested_subject == "suggested_name":
-            suggested_subject = "image"
+            dir_name = get_parent_directory_name(filepath)
+            suggested_subject = dir_name if dir_name else "image"
 
-        suggested_name = f"{suggested_subject}_{date_str}{os.path.splitext(filepath)[1]}"
+        suggested_name = f"{suggested_subject.replace(' ', '_')}_{date_str}{os.path.splitext(filepath)[1]}"
         return suggested_name
     except Exception as e:
         print(f"Error analyzing image: {e}")
-        return os.path.basename(filepath)
+        # Fallback to directory name + date if image analysis fails
+        date_str = get_file_date(filepath)
+        dir_name = get_parent_directory_name(filepath)
+        subject = dir_name if dir_name else "image"
+        return f"{subject.replace(' ', '_')}_{date_str}{os.path.splitext(filepath)[1]}"
 
 
 def get_suggested_name(filepath):
@@ -162,4 +193,6 @@ def get_suggested_name(filepath):
     else:
         # Fallback for other files
         date_str = get_file_date(filepath)
-        return f"file_{date_str}{ext}"
+        dir_name = get_parent_directory_name(filepath)
+        subject = dir_name if dir_name else "file"
+        return f"{subject.replace(' ', '_')}_{date_str}{ext}"

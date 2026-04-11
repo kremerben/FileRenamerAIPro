@@ -28,3 +28,8 @@ Add a README.md file that provides instructions on running the application
 Is it possible to view the creation date of the file itself and use that as the date to use in the file renaming?
 
 ---
+If the file has no discernable text to use in naming, and also resides in a directory, use the directory name as the name for the file. Do not use the directory name if it is not descriptive, such as "Documents", "Downloads", "projects", "Desktop", "New Folder", "zzz_archive", or "work".
+
+---
+
+
