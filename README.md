@@ -7,7 +7,7 @@ File Renamer AI is a desktop application designed to help users rename files and
 - **File & Directory Support**: Select a single file or an entire directory to process files one by one.
 - **PDF Analysis**: Scans the first page of PDF files for the most prominent text (titles) and dates.
 - **Image Analysis**: Extracts metadata (EXIF) from images to find the original creation date and suggests names based on content.
-- **Live Preview**: View the file content (PDF or Image) and selectable text (for PDFs) before renaming.
+- **Live Preview**: View the file content (PDF or Image), selectable text (for PDFs), and the detected/creation date before renaming.
 - **Confirmation Modal**: Review and edit the suggested name before finalizing the rename.
 
 ## Prerequisites
@@ -48,4 +48,5 @@ python main.py
 - **GUI Framework**: PyQt6
 - **PDF Processing**: PyMuPDF (fitz)
 - **Image Processing**: Pillow (PIL)
+- **Date Extraction**: The app prioritizes dates found within the file content (PDF text or Image EXIF). If no date is found, it falls back to the file's creation date (birth time).
 - **Heuristics**: The app uses font size analysis in PDFs to identify titles and regex patterns for date extraction.
