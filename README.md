@@ -5,9 +5,11 @@ File Renamer AI is a desktop application designed to help users rename files and
 ## Features
 
 - **File & Directory Support**: Select a single file or an entire directory to process files one by one.
+- **Directory List View**: See all files in the current selection in a sidebar, with highlighting for the active file.
 - **PDF Analysis**: Scans the first page of PDF files for the most prominent text (titles) and dates.
 - **Image Analysis**: Extracts metadata (EXIF) from images to find the original creation date and suggests names based on content.
 - **Live Preview**: View the file content (PDF or Image), selectable text (for PDFs), and the detected/creation date before renaming.
+- **Filename Manipulation**: Quick-action buttons to titlecase suggestions or convert spaces to underscores.
 - **Confirmation Modal**: Review and edit the suggested name before finalizing the rename.
 
 ## Prerequisites
