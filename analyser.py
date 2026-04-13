@@ -184,6 +184,23 @@ def analyze_image(filepath):
         return f"{subject.replace(' ', '_')}_{date_str}{os.path.splitext(filepath)[1]}"
 
 
+def get_unique_path(target_path):
+    if not os.path.exists(target_path):
+        return target_path
+
+    directory = os.path.dirname(target_path)
+    filename = os.path.basename(target_path)
+    base, ext = os.path.splitext(filename)
+
+    counter = 1
+    while True:
+        new_filename = f"{base}_{counter}{ext}"
+        new_path = os.path.join(directory, new_filename)
+        if not os.path.exists(new_path):
+            return new_path
+        counter += 1
+
+
 def get_suggested_name(filepath):
     ext = os.path.splitext(filepath)[1].lower()
     if ext == ".pdf":

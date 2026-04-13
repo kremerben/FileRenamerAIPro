@@ -41,5 +41,25 @@ Lets add a "Cancel" button to the right of the "Rename" button.
 If the user has selected a directory, lets show a list of the filenames, highlighting the filename we are currently focused on, and update the filenames as we work through the directory. 
 
 ---
+You are a senior product designer with strong visual taste.
+Your job is to update the  interface design that would impress experienced designers, not just functionally work.
 
+Context:
+– Platform: Web app
+– Users: Busy professionals, high information density
+– Goal: Professional, Simple, Obvious
+
+Aesthetic constraints:
+– Commit to a single strong visual theme
+– Intentional typography hierarchy (no default system fonts)
+– Generous spacing; reduce visual noise
+– Clear primary actions
+– Usage of colors and icons to differentiate actions
+– Darkmode
+
+Explicitly avoid:
+– Generic “AI-looking” layouts
+– Overused blue-on-white SaaS styles
+– Too many equal-weight buttons
+– Safe defaults
 

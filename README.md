@@ -1,16 +1,16 @@
-# File Renamer AI
+# File Renamer AI Pro
 
-File Renamer AI is a desktop application designed to help users rename files and directories based on their content. It uses AI-driven suggestions (currently using internal heuristics and metadata analysis) to identify prominent titles and dates within files to suggest appropriate, standardized filenames.
+A high-performance file renaming utility for professionals, featuring a modern, high-information-density interface with AI-driven suggestions.
 
-## Features
+## Key Features
 
-- **File & Directory Support**: Select a single file or an entire directory to process files one by one.
-- **Directory List View**: See all files in the current selection in a sidebar, with highlighting for the active file.
-- **PDF Analysis**: Scans the first page of PDF files for the most prominent text (titles) and dates.
-- **Image Analysis**: Extracts metadata (EXIF) from images to find the original creation date and suggests names based on content.
-- **Live Preview**: View the file content (PDF or Image), selectable text (for PDFs), and the detected/creation date before renaming.
-- **Filename Manipulation**: Quick-action buttons to titlecase suggestions or convert spaces to underscores.
-- **Confirmation Modal**: Review and edit the suggested name before finalizing the rename.
+- **Pro-grade Interface**: Darkmode-native, minimal visual noise, and a sophisticated typography hierarchy.
+- **Queue Management**: Integrated sidebar displaying all files in the current selection for efficient batch processing.
+- **Smart Analysis**: Scans PDF text (using font size heuristics) and Image EXIF metadata to identify relevant titles and dates.
+- **Contextual Fallbacks**: Automatically uses the parent directory name if file content is missing or non-descriptive.
+- **Live Preview System**: Instant high-fidelity previews for PDFs and images, with selectable text for document analysis.
+- **Standardized Output**: Quick-action tools for title-casing and underscore-normalization of filenames.
+- **Safety First**: Non-destructive previewing, explicit confirmation dialogs, and automatic collision detection (appending numeric suffixes for unique names).
 
 ## Prerequisites
 
