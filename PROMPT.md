@@ -1,6 +1,6 @@
-
 # App to name files
 
+This app was nearly entirely built using Pycharm's Junie/Claude AI. These are the prompts I gave along the way.
 ---
 
 ## Prompts for Junie
@@ -63,3 +63,13 @@ Explicitly avoid:
 – Too many equal-weight buttons
 – Safe defaults
 
+---
+When processing files in a directory, if the filename already exists, let's append a number to the end, before the extension to ensure uniqueness.
+
+---
+How would I wrap this up into an app that I could move to other macs?
+
+---
+What is needed to run on an Intel based mac?
+
+---

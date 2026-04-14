@@ -1,6 +1,12 @@
 # File Renamer AI Pro
 
-A high-performance file renaming utility for professionals, featuring a modern, high-information-density interface with AI-driven suggestions.
+AI description: "A high-performance file renaming utility for professionals, featuring a modern, high-information-density interface with AI-driven suggestions."
+
+Human description: I have a lot of files that were scanned, but needed to be renamed. I needed a way to quickly view the file and semi-automatically rename them based on the content. There is a method for future expansion to connect to an AI model, for even more automatic suggestions.
+
+## Interface
+
+![FileRenamerAIPro_app_interface.png](assets/FileRenamerAIPro_app_interface.png)
 
 ## Key Features
 
@@ -41,6 +47,22 @@ To start the application, run the `main.py` script:
 ```bash
 python main.py
 ```
+
+## Build
+The best results are achieved by building on the same machine that will run the app.
+
+To build the app, simply run:
+
+```bash
+build_macos.sh
+# for building on Apple Silicon for Intel
+build_macos.sh arch -x86_64
+# or for universal build
+build_macos.sh --target-arch universal2
+```
+
+###### Note: The universal build from Apple Silicon did not work on my personal Intel Mac, but running the build on the Intel Mac worked fine.
+
 
 ## Usage
 
