@@ -12,7 +12,12 @@ pip install pyinstaller PyQt6 pymupdf Pillow
 # --noconfirm: Replaces the output directory without asking.
 # --clean: Cleans PyInstaller cache before building.
 # --name: Specifies the name of the app bundle.
-echo "Building the application..."
+# --target-arch: (Optional) Set to 'universal2' to build for both Intel and Apple Silicon.
+#                Requires a universal Python and all dependencies must have universal2 or 
+#                separate x86_64/arm64 wheels available.
+#                Alternatively, build on an Intel Mac to create an Intel-only bundle.
+ARCH=$(uname -m)
+echo "Building for $ARCH architecture..."
 pyinstaller --windowed \
             --noconfirm \
             --clean \

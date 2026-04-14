@@ -12,6 +12,13 @@ A high-performance file renaming utility for professionals, featuring a modern, 
 - **Standardized Output**: Quick-action tools for title-casing and underscore-normalization of filenames.
 - **Safety First**: Non-destructive previewing, explicit confirmation dialogs, and automatic collision detection (appending numeric suffixes for unique names).
 
+## Compatibility & Intel Mac Support
+
+- **macOS Version**: macOS 11.0 (Big Sur) or newer is required (due to PyQt6 support).
+- **Architecture**: This app can run on both Intel-based Macs and Apple Silicon (M1/M2/M3).
+- **Building for Intel**: To create a bundle that runs on Intel Macs, the build process should ideally be run on an Intel Mac. If building on Apple Silicon for Intel, you may need to use `arch -x86_64` or a universal Python build with `--target-arch universal2` in PyInstaller.
+- **Distribution**: If you've built the app on one architecture (e.g., Apple Silicon) and want to run it on another (e.g., Intel), the `.app` bundle must be compatible. For maximum reliability, build the app on the same type of machine that will use it.
+
 ## Prerequisites
 
 - Python 3.8 or higher
